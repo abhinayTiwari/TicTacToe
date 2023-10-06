@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Tic-Tac-Toe - 2 Player</title>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+   <script src="index.js"></script>
+</head>
+
+<body>
+   <h1>Tic-Tac-Toe - 2 Player</h1>
+   <div class="board" id="board">
+      <div class="cell" onclick="makeMove(0, 0)"></div>
+      <div class="cell" onclick="makeMove(0, 1)"></div>
+      <div class="cell" onclick="makeMove(0, 2)"></div>
+      <div class="cell" onclick="makeMove(1, 0)"></div>
+      <div class="cell" onclick="makeMove(1, 1)"></div>
+      <div class="cell" onclick="makeMove(1, 2)"></div>
+      <div class="cell" onclick="makeMove(2, 0)"></div>
+      <div class="cell" onclick="makeMove(2, 1)"></div>
+      <div class="cell" onclick="makeMove(2, 2)"></div>
+   </div>
+   <p id="message"></p>
+   <button class="refresh-button" onclick="resetGame()">Restart Game</button>
+
+   <script>
+      let board = [["", "", ""], ["", "", ""], ["", "", ""]];
+      let currentPlayer = "X";
+      let gameOver = false;
+
+      function makeMove(row, col) {
+         if (!gameOver && board[row][col] === "") {
+            board[row][col] = currentPlayer;
+            document.getElementById("board").children[row * 3 + col].innerHTML = currentPlayer;
+            if (checkWinner(currentPlayer)) {
+               document.getElementById("message").innerHTML = currentPlayer + " wins!";
+               gameOver = true;
+            } else if (isBoardFull()) {
+               document.getElementById("message").innerHTML = "It's a draw!";
+               gameOver = true;
+            } else {
+               currentPlayer = (currentPlayer === "X") ? "O" : "X";
+            }
+         }
+      }
+   </script>
+</body>
+
+</html>
