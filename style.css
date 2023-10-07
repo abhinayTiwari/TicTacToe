@@ -36,3 +36,22 @@ body {
   border-radius: 5px;
   text-align: center;
 }
+
+@media (max-width: 480px) {
+  /* Adjust styling for smaller screens */
+  .board {
+    width: 90%;
+    grid-template-columns: repeat(3, 30%);
+    margin: 0 auto;
+  }
+
+  .cell {
+    width: 30%;
+    height: 100px;
+    font-size: 24px;
+  }
+
+  .refresh-button {
+    width: 100%;
+  }
+}
